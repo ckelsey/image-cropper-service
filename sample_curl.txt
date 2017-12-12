@@ -1,0 +1,1 @@
+curl -F "partindex=0" -F "totalfilesize=4594493" -F "totalparts=1" -F "id=anID" -F "pan=0" -F "tilt=0" -F "zoom=50" -F "x=106" -F "y=53" -F "width=977" -F "height=782" -F "viewWidth=2120" -F "viewHeight=1068" -F "image=@/Users/chriskelsey/Sites/ck/image-cropper-service/test-images/360.jpg" http://localhost:13463/v1/image?done=1
