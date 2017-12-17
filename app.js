@@ -9,7 +9,8 @@ console.log(process.env.NODE_ENV, new Date())
 
 const controllers = {
 	image: require("./controllers/image"),
-	imageServe: require("./controllers/image.serve")
+	imageServe: require("./controllers/image.serve"),
+	sphere: require("./controllers/sphere")
 };
 
 
@@ -20,7 +21,8 @@ var routes = {
 	},
 
 	"post": {
-		"/v1/image": "image"
+		"/v1/image": "image",
+		"/v1/sphere": "sphere"
 	}
 }
 

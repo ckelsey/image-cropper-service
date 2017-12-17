@@ -2,3 +2,6 @@ curl -F "partindex=0" -F "totalfilesize=4594493" -F "totalparts=1" -F "id=anID" 
 
 curl -F "partindex=0" -F "totalfilesize=4594493" -F "totalparts=1" -F "id=anID" -F "pan=-92.60000000000001" -F "tilt=-9.700000000000001" -F "zoom=50" -F "x=292.57612267250823" -F "y=314.2842930711611" -F "width=800.1095290251919" -F "height=442.1872659176029" -F "viewWidth=1826" -F "viewHeight=1068" -F "pixelratio=2" -F "image=@/Users/chriskelsey/Sites/ck/image-cropper-service/test-images/360.jpg" http://localhost:13463/v1/image?done=1
 
+
+Unwrap a 360 and return a thumb
+curl -o ~/Desktop/test.jpg -F "totalfilesize=4594493" -F "image=@/Users/chriskelsey/Sites/ck/image-cropper-service/test-images/360.jpg" http://localhost:13463/v1/sphere?done=1
