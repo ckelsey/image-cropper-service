@@ -9,16 +9,8 @@ module.exports = function (res, headers, body, query, params, files) {
 		return res.end()
 	}
 
-	console.log(body)
-
-	// if (!files) {
-		files = body
-	// }
-
 	uploader(headers, files, body, query, Utils.tempDir)
 		.then((uploadResult) => {
-
-			console.log("UPLOAD RESULT", uploadResult);
 
 			if (uploadResult.properties.done) {
 				var thumbUrlParts = uploadResult.result.url.split("/")
@@ -26,16 +18,15 @@ module.exports = function (res, headers, body, query, params, files) {
 				thumbUrlParts.pop()
 				var thumbUrl = thumbUrlParts.join("/") + "/" + thumbName
 
-				console.log("thumbUrl", thumbUrl);
-
 				image360(uploadResult.result.url, thumbUrl).then(function () {
+					console.log(thumbUrl);
+
 					var fileStream = fs.createReadStream(thumbUrl)
 					fileStream.on("open", function () {
 						res.setHeader("Content-Type", "image/jpeg")
 						fileStream.pipe(res)
 					})
-				}, function (e) {
-					console.log("EERRR", e);
+				}, function () {
 					respond({status:500})
 				})
 
@@ -43,7 +34,7 @@ module.exports = function (res, headers, body, query, params, files) {
 				respond(uploadResult)
 			}
 		}, (uploadResult) => {
-			console.log("E", uploadResult);
+
 			respond(uploadResult)
 		})
 }

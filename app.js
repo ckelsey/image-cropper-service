@@ -11,7 +11,7 @@ const controllers = {
 	image: require("./controllers/image"),
 	imageServe: require("./controllers/image.serve"),
 	sphere: require("./controllers/sphere"),
-	sphereB64: require("./controllers/sphere-b64")
+	sphereUrl: require("./controllers/sphere-url")
 };
 
 
@@ -24,7 +24,7 @@ var routes = {
 	"post": {
 		"/v1/image": "image",
 		"/v1/sphere": "sphere",
-		"/v1/sphere-b64": "sphereB64"
+		"/v1/sphere-url": "sphereUrl"
 	}
 }
 
@@ -91,7 +91,6 @@ function handleRequest(res, headers, url, method, body, params, query, files) {
 var server = http.createServer().listen(13463);
 
 server.on("request", (req, res) => {
-	console.log("REQUEST");
 	var url = sanitize.url(req.url)
 	var headers = sanitize.object(req.headers)
 	var method = sanitize.string(req.method.toLowerCase())
@@ -107,12 +106,9 @@ server.on("request", (req, res) => {
 		url = "/v1/image"
 	}
 
-	console.log(headers)
-
-	if (headers["content-type"] && (headers["content-type"].split("multipart/form-data; boundary=")[1] || headers["content-type"].split("multipart/form-data;boundary="))) {
+	if (headers["content-type"] && headers["content-type"].split("multipart/form-data; boundary=")[1]) {
 		var form = new multiparty.Form();
 		form.parse(req, function (err, fields, files) {
-			console.log(err, fields, files);
 			handleRequest(res, headers, url, method, fields, params, query, files)
 		});
 
