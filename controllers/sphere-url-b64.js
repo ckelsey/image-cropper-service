@@ -23,11 +23,24 @@ module.exports = function (res, headers, body, query, params, files) {
 				var thumbName = "thumb_" + new Date().getTime() + ".jpg"
 
 				image360(file.path, thumbName).then(function () {
-					var thumb = fs.readFileSync(thumbName);
-					res.write(new Buffer(thumb).toString('base64'))
-					res.end()
-					fs.unlink(file.path)
-					fs.unlink(thumbName)
+					fs.readFile(thumbName, { encoding: 'base64' }, function (err, data) {
+						if (err) {
+							throw err;
+						}
+
+						var buffer = 'data:image/jpeg;base64,' + data;
+						// show me!
+						console.log(buffer);
+
+						res.setHeader("Content-Type", "text/plain")
+						res.write(buffer)
+						res.end(buffer)
+					});
+
+					// fs.unlink(file.path)
+					// fs.unlink(thumbName)
+
+
 				}, function () {
 					respond({ status: 500 })
 				})
