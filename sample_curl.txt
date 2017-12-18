@@ -6,5 +6,9 @@ curl -F "partindex=0" -F "totalfilesize=4594493" -F "totalparts=1" -F "id=anID" 
 Unwrap a 360 and return a thumb
 curl -o ~/Desktop/test.jpg -F "totalfilesize=4594493" -F "image=@/Users/chriskelsey/Sites/ck/image-cropper-service/test-images/360.jpg" http://localhost:13463/v1/sphere?done=1
 
+
+curl -X POST -d '{"image":"https://s3.amazonaws.com/swgf.nvidia.com/geforceimage/stage/149216206646149431/930/thumbnail_The_Witness_Screenshot_2017.11.29___12.34.37.92.png"}' http://localhost:13463/v1/sphere-url-b64
+
+
 Unwrap a 360 b64 image and return a thumb in b64
 curl -H "Content-Type: application/json" -X POST -d '{"image":"hola"}' http://localhost:13463/v1/sphere-b64

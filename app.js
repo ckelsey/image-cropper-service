@@ -11,7 +11,8 @@ const controllers = {
 	image: require("./controllers/image"),
 	imageServe: require("./controllers/image.serve"),
 	sphere: require("./controllers/sphere"),
-	sphereUrl: require("./controllers/sphere-url")
+	sphereUrl: require("./controllers/sphere-url"),
+	sphereUrlB64: require("./controllers/sphere-url-b64")
 };
 
 
@@ -24,7 +25,8 @@ var routes = {
 	"post": {
 		"/v1/image": "image",
 		"/v1/sphere": "sphere",
-		"/v1/sphere-url": "sphereUrl"
+		"/v1/sphere-url": "sphereUrl",
+		"/v1/sphere-url-b64": "sphereUrlB64"
 	}
 }
 

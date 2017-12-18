@@ -8,21 +8,25 @@ module.exports = function (res, headers, body, query, params, files) {
 		return res.end()
 	}
 
-	var file = fs.createWriteStream(new Date().getTime() + ".jpg");
+	console.log(body)
+
+	var ext = body.image.split(".")
+	ext = ext[ext.length - 1]
+	var file = fs.createWriteStream(new Date().getTime() + "." + ext);
+
 	https.get(body.image, function (response) {
 		response.pipe(file);
 
 		file.on('finish', function () {
 			file.close(function () {
 
-				var thumbName = "thumb_" + new Date().getTime()
+				var thumbName = "thumb_" + new Date().getTime() + ".jpg"
 
 				image360(file.path, thumbName).then(function () {
-					var fileStream = fs.createReadStream(thumbName)
-					fileStream.on("open", function () {
-						res.setHeader("Content-Type", "image/jpeg")
-						fileStream.pipe(res)
-					})
+					var thumb = fs.readFileSync(thumbName);
+					res.end(new Buffer(thumb).toString('base64'))
+					fs.unlink(file.path)
+					fs.unlink(thumbName)
 				}, function () {
 					respond({ status: 500 })
 				})
