@@ -111,6 +111,7 @@ server.on("request", (req, res) => {
 	if (headers["content-type"] && (headers["content-type"].split("multipart/form-data; boundary=")[1] || headers["content-type"].split("multipart/form-data;boundary="))) {
 		var form = new multiparty.Form();
 		form.parse(req, function (err, fields, files) {
+			console.log(err, fields, files);
 			handleRequest(res, headers, url, method, fields, params, query, files)
 		});
 
