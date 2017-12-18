@@ -106,6 +106,8 @@ server.on("request", (req, res) => {
 		url = "/v1/image"
 	}
 
+	console.log(headers)
+
 	if (headers["content-type"] && headers["content-type"].split("multipart/form-data; boundary=")[1]) {
 		var form = new multiparty.Form();
 		form.parse(req, function (err, fields, files) {
