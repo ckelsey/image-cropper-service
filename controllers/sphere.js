@@ -11,9 +11,9 @@ module.exports = function (res, headers, body, query, params, files) {
 
 	console.log(body)
 
-	if (!files) {
+	// if (!files) {
 		files = body
-	}
+	// }
 
 	uploader(headers, files, body, query, Utils.tempDir)
 		.then((uploadResult) => {
