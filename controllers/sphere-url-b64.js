@@ -29,16 +29,16 @@ module.exports = function (res, headers, body, query, params, files) {
 						}
 
 						var buffer = 'data:image/jpeg;base64,' + data;
-						// show me!
-						console.log(buffer);
+
+						fs.unlink(file.path)
+						fs.unlink(thumbName)
 
 						res.setHeader("Content-Type", "text/plain")
 						res.write(buffer)
 						res.end(buffer)
 					});
 
-					// fs.unlink(file.path)
-					// fs.unlink(thumbName)
+
 
 
 				}, function () {
