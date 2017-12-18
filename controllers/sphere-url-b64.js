@@ -24,7 +24,8 @@ module.exports = function (res, headers, body, query, params, files) {
 
 				image360(file.path, thumbName).then(function () {
 					var thumb = fs.readFileSync(thumbName);
-					res.end(new Buffer(thumb).toString('base64'))
+					res.write(new Buffer(thumb).toString('base64'))
+					res.end()
 					fs.unlink(file.path)
 					fs.unlink(thumbName)
 				}, function () {
