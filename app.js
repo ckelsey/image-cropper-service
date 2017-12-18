@@ -91,6 +91,7 @@ function handleRequest(res, headers, url, method, body, params, query, files) {
 var server = http.createServer().listen(13463);
 
 server.on("request", (req, res) => {
+	console.log("REQUEST");
 	var url = sanitize.url(req.url)
 	var headers = sanitize.object(req.headers)
 	var method = sanitize.string(req.method.toLowerCase())
