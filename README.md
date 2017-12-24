@@ -25,35 +25,35 @@ Makes an unscaled, slightly encoded large image, a scaled preview, and an unwarp
 
   You must create a s3.config.json file in the root of the repo. There is an example called s3.config.example.json
 
-  Query string if method is GET, or post params
+  ### Query string params if method is GET, or post params
 
-    **image**: path to image, required
+  **image**: path to image, required
 
-    **name**: base file name including extension. Default generated string
+  **name**: base file name including extension. Default generated string
 
-    **path**: the path to put the variant files on S3. Default "/"
+  **path**: the path to put the variant files on S3. Default "/"
 
-    **360**: boolean, if the image is a 360 or not. Default false
+  **360**: boolean, if the image is a 360 or not. Default false
 
-    **view_width**: for thumbnail, the width of the original canvas viewer. Default 4096 for 360, else width of image
+  **view_width**: for thumbnail, the width of the original canvas viewer. Default 4096 for 360, else width of image
 
-    **view_height**: for thumbnail, the height of the original canvas viewer. Default 2048 for 360, else height of image
+  **view_height**: for thumbnail, the height of the original canvas viewer. Default 2048 for 360, else height of image
 
-    **width**: for thumbnail, the width of the cropped area. Default view_width
+  **width**: for thumbnail, the width of the cropped area. Default view_width
 
-    **height**: for thumbnail, the height of the cropped area. Default view_height
+  **height**: for thumbnail, the height of the cropped area. Default view_height
 
-    **x**: for thumbnail, the left position of the cropped area. Default 0
+  **x**: for thumbnail, the left position of the cropped area. Default 0
 
-    **y**: for thumbnail, the top position of the cropped area. Default 0
+  **y**: for thumbnail, the top position of the cropped area. Default 0
 
-    **z**: for thumbnail, the zoom position of the cropped area. Default 0.5
+  **z**: for thumbnail, the zoom position of the cropped area. Default 0.5
 
-    **pan**: for thumbnail, the left position of the image if zoomed in. Default 0
+  **pan**: for thumbnail, the left position of the image if zoomed in. Default 0
 
-    **tilt**: for thumbnail, the top position of the image if zoomed in. Default 0
+  **tilt**: for thumbnail, the top position of the image if zoomed in. Default 0
 
-    **pixel_ratio**: for thumbnail, the devicePixelRatio of the device in which the crop measurements were take. Default 2
+  **pixel_ratio**: for thumbnail, the devicePixelRatio of the device in which the crop measurements were take. Default 2
 
 ## Form data
 
