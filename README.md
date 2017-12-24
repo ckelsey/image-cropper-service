@@ -4,7 +4,20 @@ For generating variants of shot with GeForce images. Images must have Ansel meta
 
 Runs on port 13463, but can be changed in ./app.js
 
-Makes an unscaled, slightly encoded large image, a scaled preview with a width of 1080px, and an unwarped/single eye thumbnail with the specified dimensions/crop
+Makes an unscaled, slightly encoded large image, a scaled preview, and an unwarped/single eye thumbnail with the specified dimensions/crop
+
+## Install
+  Must have nodejs installed, recommended to use nvm: https://github.com/creationix/nvm
+
+  Install prereqs from here https://github.com/Automattic/node-canvas#installation
+
+  Install ImageMagick for your OS
+
+  May need to run `yum install gcc-c++`
+
+  `npm i pm2 -g`
+
+  `cd to/repo/dir && npm i && pm2 start server.json`
 
 ## /v1/variants
 
