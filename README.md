@@ -13,11 +13,11 @@ Makes an unscaled, slightly encoded large image, a scaled preview, and an unwarp
 
   Install ImageMagick for your OS
 
-  May need to run `yum install gcc-c++`
+  May need to run ```yum install gcc-c++```
 
-  `npm i pm2 -g`
+  ```npm i pm2 -g```
 
-  `cd to/repo/dir && npm i && pm2 start server.json`
+  ```cd to/repo/dir && npm i && pm2 start server.json```
 
 ## Endpoint /v1/variants
 
