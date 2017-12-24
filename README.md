@@ -21,11 +21,11 @@ Makes an unscaled, slightly encoded large image, a scaled preview, and an unwarp
 
 ## Endpoint /v1/variants
 
-  ### Downloads the image from the supplied url, creates a large, small and thumbnail variants from the supplied options and uploads to a specified S3 bucket
+  Downloads the image from the supplied url, creates a large, small and thumbnail variants from the supplied options and uploads to a specified S3 bucket
 
-  ### You must create a s3.config.json file in the root of the repo. There is an example called s3.config.example.json
+  You must create a s3.config.json file in the root of the repo. There is an example called s3.config.example.json
 
-  ### Query string if method is GET, or post params
+  Query string if method is GET, or post params
 
     **image**: path to image, required
 
