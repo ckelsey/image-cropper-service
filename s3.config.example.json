@@ -1,0 +1,6 @@
+{
+	"accessKeyId": "KEY",
+	"secretAccessKey": "SEEEECRETS",
+	"region": "us-east-1",
+	"bucket": "BUCKETTOUPLOADTO"
+}

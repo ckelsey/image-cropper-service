@@ -8,7 +8,8 @@ module.exports = function (res, headers, body, query, params, files) {
 		return res.end()
 	}
 
-	var file = fs.createWriteStream(new Date().getTime() + ".jpg");
+	var ext = body.image.split(".")[body.image.split(".").length - 1]
+	var file = fs.createWriteStream(new Date().getTime() + "." + ext);
 	https.get(body.image, function (response) {
 		response.pipe(file);
 

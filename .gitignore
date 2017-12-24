@@ -1,2 +1,4 @@
 node_modules
 temp-images
+test-images
+s3.config.json

@@ -12,21 +12,24 @@ const controllers = {
 	imageServe: require("./controllers/image.serve"),
 	sphere: require("./controllers/sphere"),
 	sphereUrl: require("./controllers/sphere-url"),
-	sphereUrlB64: require("./controllers/sphere-url-b64")
+	sphereUrlB64: require("./controllers/sphere-url-b64"),
+	variants: require("./controllers/variants")
 };
 
 
 
 var routes = {
 	"get": {
-		"/v1/image": "imageServe"
+		"/v1/image": "imageServe",
+		"/v1/variants": "variants"
 	},
 
 	"post": {
 		"/v1/image": "image",
 		"/v1/sphere": "sphere",
 		"/v1/sphere-url": "sphereUrl",
-		"/v1/sphere-url-b64": "sphereUrlB64"
+		"/v1/sphere-url-b64": "sphereUrlB64",
+		"/v1/variants": "variants"
 	}
 }
 
@@ -81,8 +84,7 @@ function parseBody(body) {
 
 function handleRequest(res, headers, url, method, body, params, query, files) {
 	if (!controllers[routes[method][url]]) {
-		res.statusCode = 404
-		return res.end()
+		return require("./controllers/status")(res)
 	}
 
 	controllers[
